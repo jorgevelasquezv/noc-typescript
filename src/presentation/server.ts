@@ -14,9 +14,9 @@ export class Server {
     public static start(): void {
         console.log('Server started');
 
-        new SendEmailLogs(emailServices, fileSystemLogRepository).execute([
-            'jorge.velasquez@pragma.com.co',
-        ]);
+        // new SendEmailLogs(emailServices, fileSystemLogRepository).execute([
+        //     'jorge.velasquez@pragma.com.co',
+        // ]);
 
         // emailServices.sendEmail({
         //     to: 'jorge.velasquez@pragma.com.co',
