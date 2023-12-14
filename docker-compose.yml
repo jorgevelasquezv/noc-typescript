@@ -1,32 +1,30 @@
-# version: '3.1'
-
-# services:
-
-#   mongo:
-#     image: mongo
-#     restart: always
-#     environment:
-#       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-#       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
-
-#   mongo-express:
-#     image: mongo-express
-#     restart: always
-#     ports:
-#       - 8081:8081
-#     environment:
-#       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USER}
-#       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASS}
-#       ME_CONFIG_MONGODB_URL: ${MONGO_URL}
-
 version: '3.8'
-
 services:
-  mongo:
+  mongo-db:
     image: mongo
     restart: always
+    container_name: mongo-db-noc
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    # volumes:
+    #   - ./mongo:/data/db
+    # extra_hosts:
+    #   - host.docker.internal:host-gateway
     ports:
       - 27017:27017
+  
+  postgres-db:
+    image: postgres
+    restart: always
+    container_name: postgres-db-noc
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # volumes:
+    #   - ./postgres:/var/lib/postgresql/data
+    # extra_hosts:
+    #   - host.docker.internal:host-gateway
+    ports:
+      - 5433:5432

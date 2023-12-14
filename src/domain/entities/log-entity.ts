@@ -22,13 +22,22 @@ export class LogEntity {
         this.level = level;
         this.message = message;
         this.origin = origin;
-        this.createAt = createAt ;
+        this.createAt = createAt;
     }
 
     static fromJson(json: string): LogEntity {
         const { level, message, origin, createAt } = JSON.parse(json);
         if (!level || !message || !createAt) {
             throw new Error('Invalid JSON');
+        }
+        const log = new LogEntity({ message, level, origin });
+        return log;
+    }
+
+    static fromObject(object: { [key: string]: any }): LogEntity {
+        const { level, message, origin, createAt } = object;
+        if (!level || !message || !createAt) {
+            throw new Error('Invalid Object');
         }
         const log = new LogEntity({ message, level, origin });
         return log;
