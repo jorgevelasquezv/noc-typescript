@@ -29,6 +29,8 @@ export class PostgresLogDatasource implements LogDatasource {
                 level,
             },
         });
+        console.log({logs});
+        
         return logs.map(LogEntity.fromObject);
     }
 }

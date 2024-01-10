@@ -12,5 +12,23 @@ MAILER_EMAIL=
 MAILER_SECRET_KEY=
 
 PROD=false
+
+MONGO_URL=
+MONGO_DB_NAME=
+MONGO_USER=
+MONGO_PASS=
+
+POSTGRES_USER=
+POSTGRES_PASS=
+POSTGRES_DB=
 ````
 3. Ejecutar el comando ```npm install```
+4. Levantar las bases de datos con el comando 
+    ```
+    docker compose up -d
+    ```
+5. Ejecutar el comando 
+   ```
+   npx prisma migrate dev
+   ```
+6. Ejecutar ```npm run dev```

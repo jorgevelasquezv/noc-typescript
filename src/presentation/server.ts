@@ -10,12 +10,6 @@ import { LogRepositoryImpl } from '../infrastructure/repositories/log.repository
 import { CronServices } from './cron/cron-services';
 import { EmailServices } from './email/email.service';
 
-// const LogRepository = new LogRepositoryImpl(
-//     // new FileSystemDatasource()
-//     // new MongoLogDatasource()
-//     new PostgresLogDatasource()
-// );
-
 const fsLogRepository = new LogRepositoryImpl(
     new FileSystemDatasource()
 );

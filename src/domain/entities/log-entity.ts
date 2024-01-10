@@ -30,16 +30,26 @@ export class LogEntity {
         if (!level || !message || !createAt) {
             throw new Error('Invalid JSON');
         }
-        const log = new LogEntity({ message, level, origin });
+        const log = new LogEntity({
+            message,
+            level,
+            origin,
+            createAt: new Date(createAt),
+        });
         return log;
     }
 
     static fromObject(object: { [key: string]: any }): LogEntity {
         const { level, message, origin, createAt } = object;
-        if (!level || !message || !createAt) {
+        if (!level || !message || !origin || !createAt) {
             throw new Error('Invalid Object');
         }
-        const log = new LogEntity({ message, level, origin });
+        const log = new LogEntity({
+            message,
+            level: level.toLowerCase(),
+            origin,
+            createAt: new Date(createAt),
+        });
         return log;
     }
 }
